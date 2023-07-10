@@ -9,7 +9,7 @@ class Config:
     DATABASE_URI = os.environ.get("DATABASE_URI", "")  
     DATABASE_NAME = os.environ.get("DATABASE_NAME", "Cluste0")
     COLLECTION_NAME = os.environ.get('COLLECTION_NAME', 'Data')
-    SESSION = os.environ.get("SESSION", "")   
+    SESSION = os.environ.get("SESSION", "DATABASE_URI",")   
     TO_CHANNEL = int(os.environ.get("TO_CHANNEL", ""))
     BOT_USERNAME= os.environ.get("BOT_USERNAME", "")
 
