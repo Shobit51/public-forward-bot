@@ -5,9 +5,22 @@ from marshmallow.exceptions import ValidationError
 from config import Config
 DATABASE_URI, DATABASE_NAME, COLLECTION_NAME = Config.DATABASE_URI, Config.DATABASE_NAME, Config.COLLECTION_NAME
 
-client = AsyncIOMotorClient(DATABASE_URI)
-db = client[DATABASE_NAME]
-instance = Instance(db)
+import os
+from pymongo import MongoClient
+
+# Function to initialize the MongoDB connection
+def init_db():
+    # Retrieve the MongoDB URI from the environment variable
+    db_uri = os.environ.get("Database_URI")
+
+    # Create a MongoDB client
+    client = MongoClient(db_uri)
+
+    # Access the database (replace "your_database_name" with the actual database name)
+    db = client["DATABASE_NAME"]
+
+    # Return the database object
+    return db
 
 
 @instance.register
